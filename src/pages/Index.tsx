@@ -5,7 +5,7 @@ import TrustedBySection from "@/components/TrustedBySection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-security font-poppins">
+    <div className="min-h-screen bg-white font-poppins">
       <Header />
       <HeroSection />
       <TrustedBySection />

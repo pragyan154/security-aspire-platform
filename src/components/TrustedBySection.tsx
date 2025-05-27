@@ -10,23 +10,23 @@ const TrustedBySection = () => {
   ];
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <h3 className="text-gray-600 text-lg font-medium">
-            These cloud-native companies trust Security
+            These cloud-native companies sleep better at night
           </h3>
         </div>
         
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
           {companyLogos.map((company, index) => (
             <div
               key={index}
-              className="opacity-60 hover:opacity-80 transition-opacity duration-200"
+              className="opacity-40 hover:opacity-60 transition-opacity duration-300"
             >
               {/* Placeholder company logos */}
               <div 
-                className="bg-gray-300 rounded-lg flex items-center justify-center text-gray-600 font-semibold"
+                className="bg-gray-400 rounded-lg flex items-center justify-center text-white font-semibold text-sm"
                 style={{ width: `${company.width}px`, height: "40px" }}
               >
                 {company.name}
