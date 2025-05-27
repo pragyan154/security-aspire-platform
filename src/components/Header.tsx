@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,14 +10,25 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gray-900">
+            <Link to="/" className="text-2xl font-bold text-gray-900">
               Security
-            </h1>
+            </Link>
           </div>
 
           {/* Navigation Menu - Centered */}
           <nav className="hidden md:flex items-center bg-gray-900 rounded-full px-8 py-3 space-x-8">
-            <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 text-sm font-medium">Product</a>
+            <div className="relative group">
+              <span className="text-white hover:text-gray-300 transition-colors duration-200 text-sm font-medium cursor-pointer">Product</span>
+              <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-48">
+                <div className="py-2">
+                  <Link to="/sast" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">SAST</Link>
+                  <Link to="/dast" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">DAST</Link>
+                  <Link to="/cpm" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">CPM</Link>
+                  <Link to="/secret-detection" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Secret Detection</Link>
+                  <Link to="/vulnerable-components" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Vulnerable Components</Link>
+                </div>
+              </div>
+            </div>
             <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 text-sm font-medium">Solutions</a>
             <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 text-sm font-medium">Pricing</a>
             <a href="#" className="text-white hover:text-gray-300 transition-colors duration-200 text-sm font-medium">Resources</a>
