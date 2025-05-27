@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import TrustedBySection from "@/components/TrustedBySection";
+import SecuritySections from "@/components/SecuritySections";
 
 const Index = () => {
   return (
@@ -9,6 +10,7 @@ const Index = () => {
       <Header />
       <HeroSection />
       <TrustedBySection />
+      <SecuritySections />
     </div>
   );
 };
