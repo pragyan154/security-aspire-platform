@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -80,7 +79,7 @@ const SecuritySections = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
       
       for (const section of sections) {
         const element = document.getElementById(section.id);
@@ -105,17 +104,17 @@ const SecuritySections = () => {
 
   return (
     <div className="relative">
-      {/* Fixed Header */}
-      <div className="fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-40 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <h2 className="text-xl font-semibold text-gray-900 transition-all duration-300">
+      {/* Floating Center Header */}
+      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none">
+        <div className="bg-white/95 backdrop-blur-sm border-2 border-security-purple rounded-2xl px-6 py-3 shadow-lg transition-all duration-300">
+          <h2 className="text-lg font-semibold text-gray-900 whitespace-nowrap">
             {getActiveTitle()}
           </h2>
         </div>
       </div>
 
       {/* Sections */}
-      <div className="pt-20 space-y-32">
+      <div className="space-y-32">
         {sections.map((section, index) => (
           <section
             key={section.id}
