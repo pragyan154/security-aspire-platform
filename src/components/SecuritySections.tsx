@@ -1,8 +1,9 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
 const SecuritySections = () => {
-  const [activeSection, setActiveSection] = useState("sast");
+  const [activeSection, setActiveSection] = useState("about");
 
   const sections = [
     {
@@ -79,8 +80,15 @@ const SecuritySections = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
       
+      // Check if we're at the top (show "About")
+      if (window.scrollY < 100) {
+        setActiveSection("about");
+        return;
+      }
+      
+      // Check which section is currently in view
       for (const section of sections) {
         const element = document.getElementById(section.id);
         if (element) {
@@ -94,27 +102,40 @@ const SecuritySections = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, [sections]);
 
   const getActiveTitle = () => {
+    if (activeSection === "about") {
+      return "About";
+    }
+    
     const section = sections.find(s => s.id === activeSection);
-    return section ? section.title : sections[0].title;
+    if (section) {
+      // Extract the acronym or main part of the title
+      if (section.id === "sast") return "SAST";
+      if (section.id === "dast") return "DAST";
+      if (section.id === "cpm") return "CPM";
+      if (section.id === "secret-detection") return "Secret Detection";
+      if (section.id === "vulnerable-components") return "Vulnerable Components";
+    }
+    return "About";
   };
 
   return (
     <div className="relative">
-      {/* Floating Center Header */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none">
-        <div className="bg-white/95 backdrop-blur-sm border-2 border-security-purple rounded-2xl px-6 py-3 shadow-lg transition-all duration-300">
-          <h2 className="text-lg font-semibold text-gray-900 whitespace-nowrap">
+      {/* Fixed Top Header */}
+      <div className="fixed top-20 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-40 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <h2 className="text-xl font-semibold text-gray-900 transition-all duration-300">
             {getActiveTitle()}
           </h2>
         </div>
       </div>
 
       {/* Sections */}
-      <div className="space-y-32">
+      <div className="pt-20 space-y-32">
         {sections.map((section, index) => (
           <section
             key={section.id}
