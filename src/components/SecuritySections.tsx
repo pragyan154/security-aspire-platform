@@ -80,10 +80,10 @@ const SecuritySections = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const scrollPosition = window.scrollY + window.innerHeight * 0.6; // Changed from /3 to *0.6
       
       // Check if we're at the top (show "About")
-      if (window.scrollY < 100) {
+      if (window.scrollY < 200) { // Increased from 100 to 200
         setActiveSection("about");
         return;
       }
@@ -93,7 +93,9 @@ const SecuritySections = () => {
         const element = document.getElementById(section.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          // Only change when we're well into the section (past 40% of it)
+          if (scrollPosition >= offsetTop + (offsetHeight * 0.4) && 
+              scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section.id);
             break;
           }
